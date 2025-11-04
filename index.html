@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document Portal</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main class="wrap center">
+    <header class="header">
+      <h1 class="brand">Document Verification Portal</h1>
+    </header>
+
+    <section class="card">
+      <h2 class="title">Scan Required</h2>
+      <p class="muted">
+        Please scan a valid QR code to view a document.
+      </p>
+    </section>
+
+    <footer class="footer muted">
+      © <span id="y"></span> Department Services
+    </footer>
+  </main>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

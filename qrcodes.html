@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Codes</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <!-- QRCode.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Build absolute base like http://127.0.0.1:5500/ when using Live Server
+      const base = window.location.href.replace(/qrcodes\.html.*$/,'');
+      const docs = [
+        { key: 'registration', label: 'Registration' },
+        { key: 'admission',    label: 'Admission'    },
+        { key: 'finance',      label: 'Finance'      },
+      ];
+
+      const wrap = document.getElementById('qrWrap');
+
+      docs.forEach(({key,label}) => {
+        const url = `${base}view.html?doc=${encodeURIComponent(key)}`;
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = `${label} document`;
+        card.appendChild(h3);
+
+        const codeDiv = document.createElement('div');
+        codeDiv.className = 'qrcode';
+        card.appendChild(codeDiv);
+
+        new QRCode(codeDiv, {
+          text: url,
+          width: 200,
+          height: 200,
+          correctLevel: QRCode.CorrectLevel.M
+        });
+
+        const p = document.createElement('p');
+        p.className = 'muted';
+        p.textContent = url;
+        card.appendChild(p);
+
+        wrap.appendChild(card);
+      });
+    });
+  </script>
+</head>
+<body>
+  <main class="container">
+    <h1>QR Codes</h1>
+    <p>Scan any code to open the document page.</p>
+    <div id="qrWrap" class="grid"></div>
+  </main>
+</body>
+</html>

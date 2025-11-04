@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>View Document</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <a href="index.html" class="brand">Document Verification Portal</a>
+    </header>
+
+    <section class="card doc-card">
+      <div class="doc-head">
+        <div>
+          <h1 id="docTitle" class="title">Document</h1>
+          <p id="authMsg" class="badge"></p>
+        </div>
+        <div id="deptPill" class="pill">Department</div>
+      </div>
+
+      <div id="viewerWrap" class="viewer">
+        <iframe id="pdfFrame" title="Document" width="100%" height="720" loading="lazy"></iframe>
+      </div>
+
+      <div class="doc-actions" id="downloadWrap"></div>
+
+      <div id="errorBox" class="error" style="display:none;"></div>
+    </section>
+
+    <footer class="footer muted">
+      © <span id="y"></span> Department Services
+    </footer>
+  </main>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
